@@ -1,0 +1,210 @@
+# FileName: main.py
+#:import Toolbar kivymd.toolbar.Toolbar
+#:import ThemeManager kivymd.theming.ThemeManager
+#:import MDNavigationDrawer kivymd.navigationdrawer.MDNavigationDrawer
+#:import NavigationLayout kivymd.navigationdrawer.NavigationLayout
+#:import NavigationDrawerDivider kivymd.navigationdrawer.NavigationDrawerDivider
+#:import NavigationDrawerToolbar kivymd.navigationdrawer.NavigationDrawerToolbar
+#:import NavigationDrawerSubheader kivymd.navigationdrawer.NavigationDrawerSubheader
+#:import MDCheckbox kivymd.selectioncontrols.MDCheckbox
+#:import MDSwitch kivymd.selectioncontrols.MDSwitch
+#:import MDList kivymd.list.MDList
+#:import OneLineListItem kivymd.list.OneLineListItem
+#:import TwoLineListItem kivymd.list.TwoLineListItem
+#:import ThreeLineListItem kivymd.list.ThreeLineListItem
+#:import OneLineAvatarListItem kivymd.list.OneLineAvatarListItem
+#:import OneLineIconListItem kivymd.list.OneLineIconListItem
+#:import OneLineAvatarIconListItem kivymd.list.OneLineAvatarIconListItem
+#:import MDTextField kivymd.textfields.MDTextField
+#:import MDSpinner kivymd.spinner.MDSpinner
+#:import MDCard kivymd.card.MDCard
+#:import MDSeparator kivymd.card.MDSeparator
+#:import MDDropdownMenu kivymd.menu.MDDropdownMenu
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import colors kivymd.color_definitions.colors
+#:import SmartTile kivymd.grid.SmartTile
+#:import MDSlider kivymd.slider.MDSlider
+#:import MDTabbedPanel kivymd.tabs.MDTabbedPanel
+#:import MDTab kivymd.tabs.MDTab
+#:import MDProgressBar kivymd.progressbar.MDProgressBar
+#:import MDAccordion kivymd.accordion.MDAccordion
+#:import MDAccordionItem kivymd.accordion.MDAccordionItem
+#:import MDAccordionSubItem kivymd.accordion.MDAccordionSubItem
+#:import MDThemePicker kivymd.theme_picker.MDThemePicker
+#:import MDBottomNavigation kivymd.tabs.MDBottomNavigation
+#:import MDBottomNavigationItem kivymd.tabs.MDBottomNavigationItem
+<MainWW>:
+	BoxLayout:
+	    orientation: "vertical"
+
+	    # Toolbar:
+	    #     id: toolbar
+	    #     title: "Test MDBottomNavigation"
+	    #     md_bg_color: app.theme_cls.primary_color
+	    #     left_action_items: [["menu", lambda x: None]]
+
+
+
+			# <MDFlatButton>:
+			# 	canvas:
+			# 		Color:
+			# 			rgba: self.background_color if self.state == 'normal' else self._bg_color_down
+			# 		Rectangle:
+			# 			size: self.size
+			# 			pos: self.pos
+			# 	size_hint: (None, None)
+			# 	height: dp(36)
+			# 	width: _label.texture_size[0] + dp(16)
+			# 	padding: (dp(8), 0)
+			# 	theme_text_color: 'Custom'
+			# 	text_color: root.theme_cls.primary_color
+			# 	MDLabel:
+			# 		id: _label
+			# 		text: root._text
+			# 		font_style: 'Button'
+			# 		size_hint_x: None
+			# 		text_size: (None, root.height)
+			# 		height: self.texture_size[1]
+			# 		theme_text_color: root.theme_text_color
+			# 		text_color: root.text_color
+			# 		valign: 'middle'
+			# 		halign: 'center'
+			# 		opposite_colors: root.opposite_colors
+
+
+
+	    MDBottomNavigation:
+	        id: panel
+
+	        MDBottomNavigationItem:
+	            name: "files1"
+	            text: "Python"
+	            icon: "language-python"
+	            # on_release: print("helloaa")
+	            BoxLayout:
+	                orientation: "vertical"
+	                size_hint_y: None
+	                height: self.minimum_height
+	                spacing: dp(10)
+	                pos_hint: {"center_x": .5, "center_y": .5}
+
+	                MDLabel:
+	                    font_style: "Body1"
+	                    theme_text_color: "Primary"
+	                    text: "Toggle to set custom panel color"
+	                    halign: "center"
+
+	                MDSwitch:
+	                    size_hint: None, None
+	                    size: dp(36), dp(48)
+	                    pos_hint: {"center_x": .5}
+	                    on_active:
+	                        panel.panel_color = \
+	                        [0.2980392156862745, 0.2823529411764706, 0.32941176470588235, 1] \
+	                        if self.active else app.theme_cls.bg_dark
+
+	        MDBottomNavigationItem:
+	            name: "files2"
+	            text: "C++"
+	            icon: "language-cpp"
+
+	            # on_press:root.ids.scr_mngr.current = 'list'
+
+				ScrollView:
+                    do_scroll_x: False
+					id:1
+                    MDList:
+						id: testAAA
+						# on_release:print(self.index)
+
+						# OneLineListItem:
+						# 	text: "Two-line item"
+							# secondary_text: "Secondary text here"
+
+
+	            # MDLabel:
+	            #     font_style: "Body1"
+	            #     theme_text_color: "Primary"
+	            #     text: "I programming of C++"
+	            #     halign: "center"
+
+	        MDBottomNavigationItem:
+	            name: "files3"
+	            text: "JS"
+	            icon: "language-javascript"
+	            MDLabel:
+	                font_style: "Body1"
+	                theme_text_color: "Primary"
+	                text: "Oh god JS again"
+	                halign: "center"
+
+			# ScreenManager:
+			# 	id:scr_mngr
+			# 	Screen:
+			# 		name:"list"
+			# 		MDLabel:
+			# 			text:"aaa"
+			# 		MDFlatButton:
+			# 			text: "list2"
+			# 			on_release:root.ids.scr_mngr.current = 'list2'
+			#
+			#
+			# 	Screen:
+			# 		name:"list2"
+			# 		MDLabel:
+			# 			text:"ccc"
+			# 		MDFlatButton:
+			# 			text: "back"
+						# on_release:root.ids.scr_mngr.current = 'list'
+
+
+
+
+
+<MDCustomListItem>:
+	TwoLineListItem:
+		text: root.text
+		secondary_text: root.secondary_text
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
