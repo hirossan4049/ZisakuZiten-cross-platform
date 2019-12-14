@@ -87,7 +87,7 @@
 			            id: refresh_layout
 			            refresh_callback: app.refresh_callback
 			            root_layout: root
-					# <MDCustomListItem>
+					# MDCustomListItem
 						ScrollView:
 		                    do_scroll_x: False
 		                    MDList:
@@ -101,34 +101,50 @@
 	            text: "POST"
 	            icon: "language-javascript"
 
-				BoxLayout:
-					orientation:"vertical"
-					size_hint_y: None
-		            height: self.minimum_height
-		            padding: dp(48)
-		            spacing: 10
-					MDTextField:
-		                hint_text: "GroupTitle"
-		                max_text_length: 20
+				ScreenManager:
+					id:scr_mngr
+					Screen:
+						name:"fields"
+						BoxLayout:
+							orientation:"vertical"
+							size_hint_y: None
+				            height: self.minimum_height
+				            padding: dp(48)
+				            spacing: 10
+							MDTextField:
+				                hint_text: "GroupTitle"
+				                max_text_length: 20
+								id:pgtitle
 
-					MDTextField:
-						hint_text:"Ztitle1"
-						max_text_length:20
-					MDTextField:
-						hint_text:"Zcontent1"
-						max_text_length:64
+							MDTextField:
+								hint_text:"Ztitle1"
+								max_text_length:20
+								id:pztitle1
+							MDTextField:
+								hint_text:"Zcontent1"
+								max_text_length:64
+								id:pzcontent1
 
-					MDTextField:
-						hint_text:"Ztitle2"
-						max_text_length:20
-					MDTextField:
-						hint_text:"Zcontent2"
-						max_text_length:64
+							MDTextField:
+								hint_text:"Ztitle2"
+								max_text_length:20
+								id:pztitle2
+							MDTextField:
+								hint_text:"Zcontent2"
+								max_text_length:64
+								id:pzcontent2
 
-					MDFloatingActionButton:
-	                    icon: "plus"
-	                    opposite_colors: True
-	                    elevation_normal: 8
+							MDFloatingActionButton:
+			                    icon: "plus"
+			                    opposite_colors: True
+			                    elevation_normal: 8
+								on_press:root.ids.scr_mngr.current='fields'
+								on_release:app.gz_post()
+
+					Screen:
+						name:"load"
+						MDLabel:
+							text:'POST now ...\n Please wait...'
 
 
 			# ScreenManager:
