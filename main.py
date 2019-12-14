@@ -12,8 +12,8 @@ from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty
 from kivymd.app import MDApp
 import os
-from kivymd.list import TwoLineListItem
-from kivymd.snackbar import Snackbar
+from kivymd.uix.list import TwoLineListItem
+from kivymd.uix.snackbar import Snackbar
 
 # from kivymd.list.OneLineListItem import OneLineListItem
 # from kivymd.list.TwoLineListItem import TwoLineListItem
@@ -21,8 +21,9 @@ from kivymd.snackbar import Snackbar
 import requests
 import json
 import datetime
-Builder.load_file("kvfile.kv")
 import time
+
+Builder.load_file("kvfile.kv")
 
 #ListAdapter
 class MDCustomListItem(TwoLineListItem):
