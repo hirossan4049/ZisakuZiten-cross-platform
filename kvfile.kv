@@ -33,44 +33,17 @@
 #:import MDThemePicker kivymd.theme_picker.MDThemePicker
 #:import MDBottomNavigation kivymd.tabs.MDBottomNavigation
 #:import MDBottomNavigationItem kivymd.tabs.MDBottomNavigationItem
-<MainWW>:
+#:import MDScrollViewRefreshLayout kivymd.uix.refreshlayout.MDScrollViewRefreshLayout
+<MainWindow@FloatLayout>
 	BoxLayout:
 	    orientation: "vertical"
 
-	    # Toolbar:
-	    #     id: toolbar
-	    #     title: "Test MDBottomNavigation"
-	    #     md_bg_color: app.theme_cls.primary_color
-	    #     left_action_items: [["menu", lambda x: None]]
-
-
-
-			# <MDFlatButton>:
-			# 	canvas:
-			# 		Color:
-			# 			rgba: self.background_color if self.state == 'normal' else self._bg_color_down
-			# 		Rectangle:
-			# 			size: self.size
-			# 			pos: self.pos
-			# 	size_hint: (None, None)
-			# 	height: dp(36)
-			# 	width: _label.texture_size[0] + dp(16)
-			# 	padding: (dp(8), 0)
-			# 	theme_text_color: 'Custom'
-			# 	text_color: root.theme_cls.primary_color
-			# 	MDLabel:
-			# 		id: _label
-			# 		text: root._text
-			# 		font_style: 'Button'
-			# 		size_hint_x: None
-			# 		text_size: (None, root.height)
-			# 		height: self.texture_size[1]
-			# 		theme_text_color: root.theme_text_color
-			# 		text_color: root.text_color
-			# 		valign: 'middle'
-			# 		halign: 'center'
-			# 		opposite_colors: root.opposite_colors
-
+	    Toolbar:
+	        id: uptoolbar
+	        title: "Home"
+	        md_bg_color: app.theme_cls.primary_color
+	        left_action_items: [["menu", lambda x: None]]
+	        # left_action_items: [["menu", lambda x: x,["a","b","c"]]]
 
 
 	    MDBottomNavigation:
@@ -80,7 +53,7 @@
 	            name: "files1"
 	            text: "Python"
 	            icon: "language-python"
-	            # on_release: print("helloaa")
+				#on_press
 	            BoxLayout:
 	                orientation: "vertical"
 	                size_hint_y: None
@@ -105,38 +78,58 @@
 
 	        MDBottomNavigationItem:
 	            name: "files2"
-	            text: "C++"
+	            text: "API"
 	            icon: "language-cpp"
 
-	            # on_press:root.ids.scr_mngr.current = 'list'
+				BoxLayout:
+					orientation:"vertical"
+					MDScrollViewRefreshLayout:
+			            id: refresh_layout
+			            refresh_callback: app.refresh_callback
+			            root_layout: root
+					# <MDCustomListItem>
+						ScrollView:
+		                    do_scroll_x: False
+		                    MDList:
+								id: zlist
 
-				ScrollView:
-                    do_scroll_x: False
-					id:1
-                    MDList:
-						id: testAAA
-						# on_release:print(self.index)
-
-						# OneLineListItem:
-						# 	text: "Two-line item"
-							# secondary_text: "Secondary text here"
 
 
-	            # MDLabel:
-	            #     font_style: "Body1"
-	            #     theme_text_color: "Primary"
-	            #     text: "I programming of C++"
-	            #     halign: "center"
 
 	        MDBottomNavigationItem:
 	            name: "files3"
-	            text: "JS"
+	            text: "POST"
 	            icon: "language-javascript"
-	            MDLabel:
-	                font_style: "Body1"
-	                theme_text_color: "Primary"
-	                text: "Oh god JS again"
-	                halign: "center"
+
+				BoxLayout:
+					orientation:"vertical"
+					size_hint_y: None
+		            height: self.minimum_height
+		            padding: dp(48)
+		            spacing: 10
+					MDTextField:
+		                hint_text: "GroupTitle"
+		                max_text_length: 20
+
+					MDTextField:
+						hint_text:"Ztitle1"
+						max_text_length:20
+					MDTextField:
+						hint_text:"Zcontent1"
+						max_text_length:64
+
+					MDTextField:
+						hint_text:"Ztitle2"
+						max_text_length:20
+					MDTextField:
+						hint_text:"Zcontent2"
+						max_text_length:64
+
+					MDFloatingActionButton:
+	                    icon: "plus"
+	                    opposite_colors: True
+	                    elevation_normal: 8
+
 
 			# ScreenManager:
 			# 	id:scr_mngr
@@ -162,49 +155,18 @@
 
 
 <MDCustomListItem>:
+	# on_press:root.ids.uptoolbar.text="a"
 	TwoLineListItem:
 		text: root.text
 		secondary_text: root.secondary_text
 
 
 
+#memo
+# on_press:root.ids.scr_mngr.current = 'list'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# MDLabel:
+#     font_style: "Body1"
+#     theme_text_color: "Primary"
+#     text: "I programming of C++"
+#     halign: "center"
