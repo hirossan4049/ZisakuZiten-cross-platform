@@ -47,9 +47,6 @@ class MainApp(MDApp):
 
 
 
-    def api_reload(self):
-        self.get_json = requests.get("https://zisakuzitenapi2.herokuapp.com/api/groups/?format=json").json()
-        print("===API RELOAD===")
 
     def build(self):
         self.root = Factory.MainWindow()
